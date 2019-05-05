@@ -9,4 +9,4 @@ attach vdisk
 convert gpt
 create partition efi
 format fs=ntfs label=system quick
-
+assign letter=C
