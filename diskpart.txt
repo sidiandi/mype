@@ -1,0 +1,5 @@
+select disk 0
+clean
+convert gpt
+create partition efi
+format fs=ntfs label=root quick
