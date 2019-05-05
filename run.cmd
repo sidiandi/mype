@@ -1,4 +1,4 @@
 echo Hello, Winpe!
 diskpart /s %~dp0diskpart.txt
-copy d:\sources\boot.wim R:\
-DISM.exe /Apply-Image /ImageFile:R:\boot.wim /ApplyDrive:C:\ /index:1
+copy d:\sources\boot.wim M:\
+DISM.exe /Apply-Image /ImageFile:M:\boot.wim /ApplyDrive:C:\ /index:1
