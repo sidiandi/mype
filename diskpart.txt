@@ -1,12 +1,24 @@
 select disk 0
 clean
 convert gpt
-create partition efi
-format fs=ntfs label=root quick
-assign letter=R
-create vdisk file=R:\system.vhdx type=expandable maximum=1048576
+
+rem == 1. System partition =========================
+create partition efi size=100
+format quick fs=fat32 label="System"
+assign letter="S"
+rem == 2. Microsoft Reserved (MSR) partition =======
+create partition msr size=128
+rem == 3. Main partition ===========================
+create partition primary 
+format quick fs=ntfs label="Main"
+assign letter="M"
+
+rem Windows partition (vhdx)
+create vdisk file=M:\system.vhdx type=expandable maximum=1048576
 attach vdisk
 convert gpt
 create partition efi
-format fs=ntfs label=system quick
+format fs=ntfs label=windows quick
 assign letter=C
+
+exit
