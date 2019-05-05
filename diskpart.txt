@@ -3,3 +3,10 @@ clean
 convert gpt
 create partition efi
 format fs=ntfs label=root quick
+assign letter=R
+create vdisk file=R:\system.vhdx type=expandable maximum=1048576
+attach vdisk
+convert gpt
+create partition efi
+format fs=ntfs label=system quick
+
